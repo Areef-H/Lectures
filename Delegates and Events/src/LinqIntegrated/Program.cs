@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -74,7 +74,7 @@ namespace LinqIntegrated {
 
 			Console.WriteLine("Finding profitMargins  \n");
 			var profitMargins = movies.Select(m => (double)m.Earnings / m.Budget);
-
+			
 
 
 			// OrderBy: give a property to sort the resulting data by
@@ -87,6 +87,7 @@ namespace LinqIntegrated {
 			var totalPixarEarnings = movies.Where(m => m.ProductionCompany == "Pixar Animation Studios")
 				.Select(m => m.Earnings)
 				.Sum();
+			//transforming the pixar movies into just their earings and then find the summed up as a singal integer
 
 
 			Console.WriteLine("Finding pixarAverageLengthExceptLongest  \n");
@@ -95,6 +96,7 @@ namespace LinqIntegrated {
 				.Select(m => m.RunningTime)
 				.Skip(1)
 				.Average();
+			// transforming pixar movies and sort them into running time (int), and you skip the one of them, ignoring the longest one and then averaging. Since the longest is the first one cuz you ordered.
 
 
 
@@ -103,6 +105,8 @@ namespace LinqIntegrated {
 				.Select(m => (double)m.Earnings / m.Budget)
 				.OrderByDescending(pr => pr)
 				.First();
+			//The highest profit margin of pixar films
+			//pr takes into a value and returns, converted movies into doubles
 
 		}
 	}
